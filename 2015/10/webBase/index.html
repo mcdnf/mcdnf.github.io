@@ -19,7 +19,7 @@ BOM没有统一的标准(每种客户端都可以自定标准)。
 BOM的顶层是window对象(BOM对象模型见上图)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端这些你不能不知道--浏览器基础">
-<meta property="og:url" content="http://www.mcdnf.com/2015/10/webBase_bom/index.html">
+<meta property="og:url" content="http://www.mcdnf.com/2015/10/webBase/index.html">
 <meta property="og:site_name" content="木尘的博客">
 <meta property="og:description" content="浏览器对象BOM与 DOMBOM 也就是浏览器对象模型（Browser Object Model）先上图：
 BOM  ???
@@ -28,7 +28,7 @@ BOM由一系列对象组成，是访问、控制、修改客户端(浏览器)的
 BOM没有统一的标准(每种客户端都可以自定标准)。  
 BOM的顶层是window对象(BOM对象模型见上图)。">
 <meta property="og:image" content="http://s1.sinaimg.cn/mw690/005IJZCFgy6NpX3iWMoa0&690">
-<meta property="og:updated_time" content="2015-10-24T15:52:32.787Z">
+<meta property="og:updated_time" content="2015-10-24T16:16:36.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端这些你不能不知道--浏览器基础">
 <meta name="twitter:description" content="浏览器对象BOM与 DOMBOM 也就是浏览器对象模型（Browser Object Model）先上图：
@@ -92,7 +92,7 @@ BOM的顶层是window对象(BOM对象模型见上图)。">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/webBase_bom/" title="前端这些你不能不知道--浏览器基础" itemprop="url">前端这些你不能不知道--浏览器基础</a>
+      <a href="/2015/10/webBase/" title="前端这些你不能不知道--浏览器基础" itemprop="url">前端这些你不能不知道--浏览器基础</a>
   </h1>
   <p class="article-author">By
        
@@ -140,9 +140,9 @@ BOM的顶层是window对象(BOM对象模型见上图)。">
 </li>
 </ol>
 <h4 id="window-location_对象">window.location 对象</h4><p>window.location 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location<span class="class">.hash</span> <span class="comment">//如果URL包含#，该方法将返回该符号之后的内容</span></span><br><span class="line">location<span class="class">.host</span> <span class="comment">//服务器的名字（如www.mcdnf.com）</span></span><br><span class="line">location<span class="class">.hostname</span> <span class="comment">//通常等于host，有时会省略前面的www</span></span><br><span class="line">location<span class="class">.href</span> <span class="comment">//当前载入的页面的完整URL</span></span><br><span class="line">location<span class="class">.pathname</span> <span class="comment">//URL中的主机名后面的部分</span></span><br><span class="line">location<span class="class">.port</span> <span class="comment">//返回 web 主机的端口 （80 或 443）</span></span><br><span class="line">location<span class="class">.protocol</span> <span class="comment">//返回所使用的 web 协议（http:// 或 https://）</span></span><br><span class="line">location<span class="class">.search</span> <span class="comment">//执行GET请求的URL中的问号后面的部分（查询字符串）</span></span><br><span class="line">location.<span class="function"><span class="title">assign</span><span class="params">()</span></span> <span class="comment">//方法加载新的文档。</span></span><br><span class="line">location.<span class="function"><span class="title">assign</span><span class="params">(<span class="string">'http://www.mcdnf.com/'</span>)</span></span><span class="comment">//运行时当前页面会被替换为：http://www.mcdnf.com</span></span><br><span class="line">location.<span class="function"><span class="title">replace</span><span class="params">(<span class="string">'http://www.mcdnf.com/'</span>)</span></span> <span class="comment">//同assign()方法一样，只不过从浏览器历史中删除包含脚本的页面，这样就不能通过浏览器的后退和前进按钮访问它。</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="window-document">window.document</h4><blockquote>
-<p>属性</p>
-</blockquote>
+<h4 id="window-document">window.document</h4><ul>
+<li>属性</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -267,12 +267,123 @@ BOM的顶层是window对象(BOM对象模型见上图)。">
 <td>XSLDocument</td>
 <td>获取对 XSL 文档的顶层结点的引用。</td>
 </tr>
+<tr>
+<td>————-</td>
+<td>::——————-</td>
+</tr>
 </tbody>
 </table>
-<blockquote>
-<p>集合<br>|属性          | 描述<br>| ————-   |::——————-|<br>|all|返回对象所包含的元素集合的引用。<br>|anchors|获取所有带有 name 和/或 id 属性的 a 对象的集合。此集合中的对象以 HTML 源顺序排列。<br>|applets|获取文档中所有 applet 对象的集合。<br>|childNodes|获取作为指定对象直接后代的 HTML 元素和 TextNode 对象的集合。<br>|embeds|获取文档中所有 embed 对象的集合。<br>|forms|获取以源顺序排列的文档中所有 form 对象的集合。<br>|frames|获取给定文档定义或与给定窗口关联的文档定义的所有 window 对象的集合。<br>|images|获取以源顺序排列的文档中所有 img 对象的集合。<br>|links|获取文档中所有指定了 HREF 属性的 a 对象和所有 area 对象的集合。<br>|namespaces|获取 namespace 对象的集合。<br>|scripts|获取文档中所有 script 对象的集合。<br>|styleSheets|获取代表与文档中每个 link 或 style 对象的实例相对应的样式表的 styleSheet 对象的集合。<br>事件<br>|属性          | 描述<br>| ————-   |::——————-|<br>|onactivate|当对象设置为活动元素时触发。<br>|onbeforeactivate|对象要被设置为当前元素前立即触发。<br>|onbeforecut|当选中区从文档中删除之前在源对象触发。<br>|onbeforedeactivate|在 activeElement 从当前对象变为父文档其它对象之前立即触发。<br>|onbeforeeditfocus|在包含于可编辑元素内的对象进入用户界面激活状态前或可编辑容器变成控件选中区前触发。<br>|onbeforepaste|在选中区从系统剪贴板粘贴到文档前在目标对象上触发。<br>|onclick|在用户用鼠标左键单击对象时触发。<br>|onmouseover|鼠标指针移到对象时触发<br>|onmouseout|鼠标指针移出对象时触发</p>
+<ul>
+<li>集合</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>返回对象所包含的元素集合的引用。</td>
+</tr>
+<tr>
+<td>anchors</td>
+<td>获取所有带有 name 和/或 id 属性的 a 对象的集合。此集合中的对象以 HTML 源顺序排列。</td>
+</tr>
+<tr>
+<td>applets</td>
+<td>获取文档中所有 applet 对象的集合。</td>
+</tr>
+<tr>
+<td>childNodes</td>
+<td>获取作为指定对象直接后代的 HTML 元素和 TextNode 对象的集合。</td>
+</tr>
+<tr>
+<td>embeds</td>
+<td>获取文档中所有 embed 对象的集合。</td>
+</tr>
+<tr>
+<td>forms</td>
+<td>获取以源顺序排列的文档中所有 form 对象的集合。</td>
+</tr>
+<tr>
+<td>frames</td>
+<td>获取给定文档定义或与给定窗口关联的文档定义的所有 window 对象的集合。</td>
+</tr>
+<tr>
+<td>images</td>
+<td>获取以源顺序排列的文档中所有 img 对象的集合。</td>
+</tr>
+<tr>
+<td>links</td>
+<td>获取文档中所有指定了 HREF 属性的 a 对象和所有 area 对象的集合。</td>
+</tr>
+<tr>
+<td>namespaces</td>
+<td>获取 namespace 对象的集合。</td>
+</tr>
+<tr>
+<td>scripts</td>
+<td>获取文档中所有 script 对象的集合。</td>
+</tr>
+<tr>
+<td>styleSheets</td>
+<td>获取代表与文档中每个 link 或 style 对象的实例相对应的样式表的 styleSheet 对象的集合。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>事件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onactivate</td>
+<td>当对象设置为活动元素时触发。</td>
+</tr>
+<tr>
+<td>onbeforeactivate</td>
+<td>对象要被设置为当前元素前立即触发。</td>
+</tr>
+<tr>
+<td>onbeforecut</td>
+<td>当选中区从文档中删除之前在源对象触发。</td>
+</tr>
+<tr>
+<td>onbeforedeactivate</td>
+<td>在 activeElement 从当前对象变为父文档其它对象之前立即触发。</td>
+</tr>
+<tr>
+<td>onbeforeeditfocus</td>
+<td>在包含于可编辑元素内的对象进入用户界面激活状态前或可编辑容器变成控件选中区前触发。</td>
+</tr>
+<tr>
+<td>onbeforepaste</td>
+<td>在选中区从系统剪贴板粘贴到文档前在目标对象上触发。</td>
+</tr>
+<tr>
+<td>onclick</td>
+<td>在用户用鼠标左键单击对象时触发。</td>
+</tr>
+<tr>
+<td>onmouseover</td>
+<td>鼠标指针移到对象时触发</td>
+</tr>
+<tr>
+<td>onmouseout</td>
+<td>鼠标指针移出对象时触发</td>
+</tr>
+</tbody>
+</table>
 <h4 id="window-screen">window.screen</h4><p>screen对象可以获取某些关于屏幕的信息<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">screen<span class="class">.availWidth</span> <span class="comment">// 可用的屏幕宽度，以像素计。</span></span><br><span class="line">screen<span class="class">.availHeight</span> <span class="comment">// 可用的屏幕高度，以像素计。</span></span><br><span class="line">availHeight <span class="comment">//窗口可以使用的屏幕的高度（以像素计），基路包括操作系统需要的空间</span></span><br><span class="line">availWidth <span class="comment">//窗口可以使用的屏幕的宽度（以像素计）。</span></span><br><span class="line">colorDepth <span class="comment">//用户表示颜色的位数，大多系统采用32位。</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
 <h4 id="window-history">window.history</h4><p>window.history 对象包含浏览器的历史。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="function"><span class="title">back</span><span class="params">()</span></span> <span class="comment">//与在浏览器点击后退按钮相同</span></span><br><span class="line">history.<span class="function"><span class="title">forward</span><span class="params">()</span></span> <span class="comment">//与在浏览器中点击按钮向前相同</span></span><br></pre></td></tr></table></figure></p>
 <p>本文整理了一些常用的浏览器基础知识，可能大部分你都用过，也可能有些你很想用却不知道他是是么，算是工作经历中的积累，课可以说是笔记，有时候忘记了还可以打开看看.可能有的地方不全，或者错误的地方请及时指正。</p>
 <blockquote>
@@ -335,11 +446,19 @@ BOM的顶层是window对象(BOM对象模型见上图)。">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/webBase_bom/" title="前端这些你不能不知道--浏览器基础">
+  <strong>上一篇：</strong><br/>
+  <span>
+  前端这些你不能不知道--浏览器基础</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/10/webBase/"  title="前端这些你不能不知道--浏览器基础">
+<a href="/2015/06/sublimeText/"  title="sublimeText--我的钟爱的编程神器">
  <strong>下一篇：</strong><br/> 
- <span>前端这些你不能不知道--浏览器基础
+ <span>sublimeText--我的钟爱的编程神器
 </span>
 </a>
 </div>
@@ -348,7 +467,7 @@ BOM的顶层是window对象(BOM对象模型见上图)。">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/10/webBase_bom/" data-title="前端这些你不能不知道--浏览器基础" data-url="http://www.mcdnf.com/2015/10/webBase_bom/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/webBase/" data-title="前端这些你不能不知道--浏览器基础" data-url="http://www.mcdnf.com/2015/10/webBase/"></div>
 </section>
 
 
