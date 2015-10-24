@@ -1,0 +1,627 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>前端这些你不能不知道--浏览器基础 | 木尘的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="木尘">
+    
+
+    
+    <meta name="description" content="浏览器对象BOM与 DOMBOM 也就是浏览器对象模型（Browser Object Model）先上图：
+BOM  ???
+BOM是Browser Object Model的简写，既浏览器对象模型。   
+BOM由一系列对象组成，是访问、控制、修改客户端(浏览器)的属性的方法。 
+BOM没有统一的标准(每种客户端都可以自定标准)。  
+BOM的顶层是window对象(BOM对象模型见上图)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端这些你不能不知道--浏览器基础">
+<meta property="og:url" content="http://www.mcdnf.com/2015/10/webBase_bom/index.html">
+<meta property="og:site_name" content="木尘的博客">
+<meta property="og:description" content="浏览器对象BOM与 DOMBOM 也就是浏览器对象模型（Browser Object Model）先上图：
+BOM  ???
+BOM是Browser Object Model的简写，既浏览器对象模型。   
+BOM由一系列对象组成，是访问、控制、修改客户端(浏览器)的属性的方法。 
+BOM没有统一的标准(每种客户端都可以自定标准)。  
+BOM的顶层是window对象(BOM对象模型见上图)。">
+<meta property="og:image" content="http://s1.sinaimg.cn/mw690/005IJZCFgy6NpX3iWMoa0&690">
+<meta property="og:updated_time" content="2015-10-24T15:52:32.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端这些你不能不知道--浏览器基础">
+<meta name="twitter:description" content="浏览器对象BOM与 DOMBOM 也就是浏览器对象模型（Browser Object Model）先上图：
+BOM  ???
+BOM是Browser Object Model的简写，既浏览器对象模型。   
+BOM由一系列对象组成，是访问、控制、修改客户端(浏览器)的属性的方法。 
+BOM没有统一的标准(每种客户端都可以自定标准)。  
+BOM的顶层是window对象(BOM对象模型见上图)。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="木尘的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="木尘的博客">木尘的博客</a></h1>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="menu animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/demo">实例</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://www.mcdnf.com" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 8270645693829566000 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/webBase_bom/" title="前端这些你不能不知道--浏览器基础" itemprop="url">前端这些你不能不知道--浏览器基础</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="木尘" target="_blank" itemprop="author">木尘</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-24T02:24:00.000Z" itemprop="datePublished"> 发表于 2015-10-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#BOM_???"><span class="toc-number">1.</span> <span class="toc-text">BOM  ???</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM_???"><span class="toc-number">2.</span> <span class="toc-text">DOM  ???</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window_对象："><span class="toc-number">3.</span> <span class="toc-text">window 对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-navigator"><span class="toc-number">4.</span> <span class="toc-text">window.navigator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-location_对象"><span class="toc-number">5.</span> <span class="toc-text">window.location 对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-document"><span class="toc-number">6.</span> <span class="toc-text">window.document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-screen"><span class="toc-number">7.</span> <span class="toc-text">window.screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-history"><span class="toc-number">8.</span> <span class="toc-text">window.history</span></a></li></ol>
+		
+		</div>
+		
+		<p>浏览器对象BOM与 DOM<br>BOM 也就是浏览器对象模型（Browser Object Model）<br>先上图：<br><img src="http://s1.sinaimg.cn/mw690/005IJZCFgy6NpX3iWMoa0&amp;690" alt="BOM"></p>
+<h4 id="BOM_???">BOM  ???</h4><ul>
+<li>BOM是Browser Object Model的简写，既浏览器对象模型。   </li>
+<li>BOM由一系列对象组成，是访问、控制、修改客户端(浏览器)的属性的方法。 </li>
+<li>BOM没有统一的标准(每种客户端都可以自定标准)。  </li>
+<li>BOM的顶层是window对象(BOM对象模型见上图)。</li>
+</ul>
+<h4 id="DOM_???">DOM  ???</h4><ul>
+<li>DOM是Document Object Model的简写，既文档对象模型。  </li>
+<li>DOM由一系列对象组成，是访问、检索、修改XHTML文档内容与结构的标准方法。  </li>
+<li>DOM是跨平台与跨语言的。   </li>
+<li>DOM用于XHTML、XML文档的应用程序接口(API)。   </li>
+<li>DOM提供一种结构化的文档描述方式，从而使HTML内容使用结构化的方式显示。 </li>
+<li>DOM标准是由w3c制定与维护的 。  </li>
+<li>DOM的顶层是document对象。<h4 id="window_对象：">window 对象：</h4>所有浏览器都支持 window 对象。它表示浏览器窗口。<br>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成 员。<br>全局变量是 window 对象的属性。<br>全局函数是 window 对象的方法。<br>甚至 HTML DOM 的 document 也是 window 对象的属性之一<ol>
+<li>Window 尺寸<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.innerHeight <span class="comment">// - 浏览器窗口的内部高度</span></span><br><span class="line"><span class="built_in">window</span>.innerWidth <span class="comment">// - 浏览器窗口的内部宽度</span></span><br><span class="line"><span class="keyword">var</span> w=<span class="built_in">window</span>.innerWidth</span><br><span class="line"><span class="comment">//ie8 及其以下，下面写法兼容所有浏览器</span></span><br><span class="line">|| <span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line">|| <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line"><span class="keyword">var</span> h=<span class="built_in">window</span>.innerHeight</span><br><span class="line">|| <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">|| <span class="built_in">document</span>.body.clientHeight;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>window.open() - 打开新窗口</li>
+<li>window.close() - 关闭当前窗口</li>
+<li>window.moveTo() - 移动当前窗口</li>
+<li>window.resizeTo() - 调整当前窗口的尺寸<h4 id="window-navigator">window.navigator</h4>window.navigator 对象包含有关访问者浏览器的信息。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"navigator"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="nix"></span><br><span class="line"><span class="variable">txt =</span> <span class="string">"&lt;p&gt;Browser CodeName: "</span> + navigator.appCodeName + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;Browser Name: "</span> + navigator.appName + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;Browser Version: "</span> + navigator.appVersion + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;Cookies Enabled: "</span> + navigator.cookieEnabled + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;Platform: "</span> + navigator.platform + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;User-agent header: "</span> + navigator.userAgent + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line">txt+= <span class="string">"&lt;p&gt;User-agent language: "</span> + navigator.systemLanguage + <span class="string">"&lt;/p&gt;"</span>;</span><br><span class="line"></span><br><span class="line">document.getElementById(<span class="string">"navigator"</span>).<span class="variable">innerHTML=</span>txt;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="window-location_对象">window.location 对象</h4><p>window.location 对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location<span class="class">.hash</span> <span class="comment">//如果URL包含#，该方法将返回该符号之后的内容</span></span><br><span class="line">location<span class="class">.host</span> <span class="comment">//服务器的名字（如www.mcdnf.com）</span></span><br><span class="line">location<span class="class">.hostname</span> <span class="comment">//通常等于host，有时会省略前面的www</span></span><br><span class="line">location<span class="class">.href</span> <span class="comment">//当前载入的页面的完整URL</span></span><br><span class="line">location<span class="class">.pathname</span> <span class="comment">//URL中的主机名后面的部分</span></span><br><span class="line">location<span class="class">.port</span> <span class="comment">//返回 web 主机的端口 （80 或 443）</span></span><br><span class="line">location<span class="class">.protocol</span> <span class="comment">//返回所使用的 web 协议（http:// 或 https://）</span></span><br><span class="line">location<span class="class">.search</span> <span class="comment">//执行GET请求的URL中的问号后面的部分（查询字符串）</span></span><br><span class="line">location.<span class="function"><span class="title">assign</span><span class="params">()</span></span> <span class="comment">//方法加载新的文档。</span></span><br><span class="line">location.<span class="function"><span class="title">assign</span><span class="params">(<span class="string">'http://www.mcdnf.com/'</span>)</span></span><span class="comment">//运行时当前页面会被替换为：http://www.mcdnf.com</span></span><br><span class="line">location.<span class="function"><span class="title">replace</span><span class="params">(<span class="string">'http://www.mcdnf.com/'</span>)</span></span> <span class="comment">//同assign()方法一样，只不过从浏览器历史中删除包含脚本的页面，这样就不能通过浏览器的后退和前进按钮访问它。</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="window-document">window.document</h4><blockquote>
+<p>属性</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>activeElement</td>
+<td>获取当父 document 拥有焦点时获得焦点的对象。</td>
+</tr>
+<tr>
+<td>alinkColor</td>
+<td>设置或获取元素中所有激活链接的颜色。</td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>不赞成。设置或获取表明对象后面的背景颜色的值。</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>设置或获取用于解码对象的字符集。</td>
+</tr>
+<tr>
+<td>cookie</td>
+<td>设置或获取 cookie 的字符串值。</td>
+</tr>
+<tr>
+<td>defaultCharset</td>
+<td>从当前的区域语言中获取默认字符集。</td>
+</tr>
+<tr>
+<td>designMode</td>
+<td>设置或获取表明文档是否可被编辑的值。</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>设置或获取表明对象的阅读顺序的值。</td>
+</tr>
+<tr>
+<td>doctype</td>
+<td>获取与当前文档关联的文档类型声明。</td>
+</tr>
+<tr>
+<td>documentElement</td>
+<td>获取对文档根结点的引用。</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>设置或获取文档的安全域名。</td>
+</tr>
+<tr>
+<td>expando</td>
+<td>设置或获取表明是否可对象内创建任意变量的值。</td>
+</tr>
+<tr>
+<td>fgColor</td>
+<td>设置或获取文档的前景(文本)颜色。</td>
+</tr>
+<tr>
+<td>fileCreatedDate</td>
+<td>获取文件创建的日期。</td>
+</tr>
+<tr>
+<td>fileModifiedDate</td>
+<td>获取文件上次修改的日期。</td>
+</tr>
+<tr>
+<td>fileSize</td>
+<td>获取文件大小。</td>
+</tr>
+<tr>
+<td>implementation</td>
+<td>获取当前文档的 implementation 对象。</td>
+</tr>
+<tr>
+<td>lastModified</td>
+<td>获取页面上次修改的日期，若页面提供的话。</td>
+</tr>
+<tr>
+<td>linkColor</td>
+<td>设置或获取对象文档链接的颜色。</td>
+</tr>
+<tr>
+<td>parentWindow</td>
+<td>获取容器对象所在窗口的引用。</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>设置或获取 URL 的协议部分。</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>获取表明对象当前状态的值。</td>
+</tr>
+<tr>
+<td>referrer</td>
+<td>获取将用户引入当前页面的位置 URL。</td>
+</tr>
+<tr>
+<td>uniqueID</td>
+<td>获取为对象自动生成的唯一标识符。</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>设置或获取当前文档的 URL。</td>
+</tr>
+<tr>
+<td>URLUnencoded</td>
+<td>获取文档的 URL，去除所有字符编码。</td>
+</tr>
+<tr>
+<td>vlinkColor</td>
+<td>设置或获取用户已访问过的链接颜色。</td>
+</tr>
+<tr>
+<td>XMLDocument</td>
+<td>获取对由对象引出的的 XML 文档对象模型(DOM)的引用。</td>
+</tr>
+<tr>
+<td>XSLDocument</td>
+<td>获取对 XSL 文档的顶层结点的引用。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>集合<br>|属性          | 描述<br>| ————-   |::——————-|<br>|all|返回对象所包含的元素集合的引用。<br>|anchors|获取所有带有 name 和/或 id 属性的 a 对象的集合。此集合中的对象以 HTML 源顺序排列。<br>|applets|获取文档中所有 applet 对象的集合。<br>|childNodes|获取作为指定对象直接后代的 HTML 元素和 TextNode 对象的集合。<br>|embeds|获取文档中所有 embed 对象的集合。<br>|forms|获取以源顺序排列的文档中所有 form 对象的集合。<br>|frames|获取给定文档定义或与给定窗口关联的文档定义的所有 window 对象的集合。<br>|images|获取以源顺序排列的文档中所有 img 对象的集合。<br>|links|获取文档中所有指定了 HREF 属性的 a 对象和所有 area 对象的集合。<br>|namespaces|获取 namespace 对象的集合。<br>|scripts|获取文档中所有 script 对象的集合。<br>|styleSheets|获取代表与文档中每个 link 或 style 对象的实例相对应的样式表的 styleSheet 对象的集合。<br>事件<br>|属性          | 描述<br>| ————-   |::——————-|<br>|onactivate|当对象设置为活动元素时触发。<br>|onbeforeactivate|对象要被设置为当前元素前立即触发。<br>|onbeforecut|当选中区从文档中删除之前在源对象触发。<br>|onbeforedeactivate|在 activeElement 从当前对象变为父文档其它对象之前立即触发。<br>|onbeforeeditfocus|在包含于可编辑元素内的对象进入用户界面激活状态前或可编辑容器变成控件选中区前触发。<br>|onbeforepaste|在选中区从系统剪贴板粘贴到文档前在目标对象上触发。<br>|onclick|在用户用鼠标左键单击对象时触发。<br>|onmouseover|鼠标指针移到对象时触发<br>|onmouseout|鼠标指针移出对象时触发</p>
+<h4 id="window-screen">window.screen</h4><p>screen对象可以获取某些关于屏幕的信息<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">screen<span class="class">.availWidth</span> <span class="comment">// 可用的屏幕宽度，以像素计。</span></span><br><span class="line">screen<span class="class">.availHeight</span> <span class="comment">// 可用的屏幕高度，以像素计。</span></span><br><span class="line">availHeight <span class="comment">//窗口可以使用的屏幕的高度（以像素计），基路包括操作系统需要的空间</span></span><br><span class="line">availWidth <span class="comment">//窗口可以使用的屏幕的宽度（以像素计）。</span></span><br><span class="line">colorDepth <span class="comment">//用户表示颜色的位数，大多系统采用32位。</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="window-history">window.history</h4><p>window.history 对象包含浏览器的历史。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="function"><span class="title">back</span><span class="params">()</span></span> <span class="comment">//与在浏览器点击后退按钮相同</span></span><br><span class="line">history.<span class="function"><span class="title">forward</span><span class="params">()</span></span> <span class="comment">//与在浏览器中点击按钮向前相同</span></span><br></pre></td></tr></table></figure></p>
+<p>本文整理了一些常用的浏览器基础知识，可能大部分你都用过，也可能有些你很想用却不知道他是是么，算是工作经历中的积累，课可以说是笔记，有时候忘记了还可以打开看看.可能有的地方不全，或者错误的地方请及时指正。</p>
+<blockquote>
+<p>参考文献：<br><a href="http://www.w3cschool.com/" target="_blank" rel="external">http://www.w3cschool.com/</a><br><a href="http://www.w3cschool.cn/" target="_blank" rel="external">http://www.w3cschool.cn/</a><br><a href="http://www.yiiyaa.net/?p=761" target="_blank" rel="external">http://www.yiiyaa.net/?p=761</a><br>…</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/前端/">前端</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/06/sublimeText/"  title="sublimeText--我的钟爱的编程神器">
+ <strong>下一篇：</strong><br/> 
+ <span>sublimeText--我的钟爱的编程神器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/10/webBase_bom/" data-title="前端这些你不能不知道--浏览器基础" data-url="http://www.mcdnf.com/2015/10/webBase_bom/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#BOM_???"><span class="toc-number">1.</span> <span class="toc-text">BOM  ???</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM_???"><span class="toc-number">2.</span> <span class="toc-text">DOM  ???</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window_对象："><span class="toc-number">3.</span> <span class="toc-text">window 对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-navigator"><span class="toc-number">4.</span> <span class="toc-text">window.navigator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-location_对象"><span class="toc-number">5.</span> <span class="toc-text">window.location 对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-document"><span class="toc-number">6.</span> <span class="toc-text">window.document</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-screen"><span class="toc-number">7.</span> <span class="toc-text">window.screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-history"><span class="toc-number">8.</span> <span class="toc-text">window.history</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/sublimeText/" title="sublimeText">sublimeText<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/前端/" title="前端">前端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sublimeText/" title="sublimeText">sublimeText<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/vincentblog" target="_blank" title="我的CSDN博客">我的CSDN博客</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 木尘-web前端攻城狮（html5的终极粉丝） <br/>
+			一个在现实的深渊中艰难的前行的小屌丝，每一份经历都是一种收获，每一滴汗水都必会有收获，爱学习，爱分享。在学习中快乐，在分享中成长...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/https://github.com/mcdnf" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/www.zhihu.com/people/mcdnf" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:392567445@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		<a href="http://www.mcdnf.com" title="木尘的博客">木尘的博客</a> © 2015
+		</p>
+</div>
+</footer>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.js"></script>
+<script src="http://cdn.bootcss.com/jquery.imagesloaded/3.1.8/imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="http://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"mcdnf"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0ae8f1aea0046bb5b627c1d882e7081b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256041303'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1256041303' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
