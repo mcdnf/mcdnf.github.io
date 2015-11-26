@@ -7,11 +7,11 @@
 </head>
 <script>
 
-document.write("您设备的屏幕分辨率宽度是: " + screen.width + '<br>');
-document.write("您设备的屏幕分辨率高度是: " + screen.height + '<br>');
+document.write("您设备的屏幕分辨率宽度是: " + window.screen.width + '<br>');
+document.write("您设备的屏幕分辨率高度是: " + window.screen.height + '<br>');
 document.write("您设备的dpr是: " + window.devicePixelRatio + '<br>');
-document.write("您设备的实际宽度是: " + screen.width/window.devicePixelRatio + '<br>');
-document.write("您设备的实际高度是: " + screen.height/window.devicePixelRatio + '<br>');
+document.write("您设备的实际宽度是: " + window.screen.width/window.devicePixelRatio + '<br>');
+document.write("您设备的实际高度是: " + window.screen.height/window.devicePixelRatio + '<br>');
 </script>
 
 </body>
